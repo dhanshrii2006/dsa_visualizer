@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    background: #0f172a;
+    color: #f8fafc;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    padding: 40px;
+  }
+  .code-container {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    width: fit-content;
+    min-width: 600px;
+  }
+  .keyword { color: #f472b6; }
+  .type { color: #60a5fa; }
+  .function { color: #fbbf24; }
+  .number { color: #c084fc; }
+  .comment { color: #94a3b8; font-style: italic; }
+  .operator { color: #38bdf8; }
+  h2 { font-family: 'Segoe UI', sans-serif; color: #4f46e5; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<div id="bubble-section">
+<h2>Bubble Sort</h2>
+<div class="code-container">
+<pre>
+<span class="type">void</span> <span class="function">bubbleSort</span>(<span class="type">int</span> arr[], <span class="type">int</span> n) {
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i < n - <span class="number">1</span>; i++) {
+        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j < n - i - <span class="number">1</span>; j++) {
+            <span class="keyword">if</span> (arr[j] > arr[j + <span class="number">1</span>]) {
+                <span class="type">int</span> temp = arr[j];
+                arr[j] = arr[j + <span class="number">1</span>];
+                arr[j + <span class="number">1</span>] = temp;
+            }
+        }
+    }
+}
+</pre>
+</div>
+</div>
+
+<div id="selection-section">
+<h2>Selection Sort</h2>
+<div class="code-container">
+<pre>
+<span class="type">void</span> <span class="function">selectionSort</span>(<span class="type">int</span> arr[], <span class="type">int</span> n) {
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i < n - <span class="number">1</span>; i++) {
+        <span class="type">int</span> minIdx = i;
+        <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j < n; j++) {
+            <span class="keyword">if</span> (arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        <span class="type">int</span> temp = arr[i];
+        arr[i] = arr[minIdx];
+        arr[minIdx] = temp;
+    }
+}
+</pre>
+</div>
+</div>
+
+<div id="insertion-section">
+<h2>Insertion Sort</h2>
+<div class="code-container">
+<pre>
+<span class="type">void</span> <span class="function">insertionSort</span>(<span class="type">int</span> arr[], <span class="type">int</span> n) {
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i < n; i++) {
+        <span class="type">int</span> key = arr[i];
+        <span class="type">int</span> j = i - <span class="number">1</span>;
+        <span class="keyword">while</span> (j >= <span class="number">0</span> && arr[j] > key) {
+            arr[j + <span class="number">1</span>] = arr[j];
+            j--;
+        }
+        arr[j + <span class="number">1</span>] = key;
+    }
+}
+</pre>
+</div>
+</div>
+
+<div id="merge-section">
+<h2>Merge Sort</h2>
+<div class="code-container">
+<pre>
+<span class="type">void</span> <span class="function">mergeSort</span>(<span class="type">int</span> arr[], <span class="type">int</span> left, <span class="type">int</span> right) {
+    <span class="keyword">if</span> (left < right) {
+        <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;
+        <span class="function">mergeSort</span>(arr, left, mid);
+        <span class="function">mergeSort</span>(arr, mid + <span class="number">1</span>, right);
+        <span class="function">merge</span>(arr, left, mid, right);
+    }
+}
+</pre>
+</div>
+</div>
+
+<div id="quick-section">
+<h2>Quick Sort</h2>
+<div class="code-container">
+<pre>
+<span class="type">void</span> <span class="function">quickSort</span>(<span class="type">int</span> arr[], <span class="type">int</span> low, <span class="type">int</span> high) {
+    <span class="keyword">if</span> (low < high) {
+        <span class="type">int</span> pi = <span class="function">partition</span>(arr, low, high);
+        <span class="function">quickSort</span>(arr, low, pi - <span class="number">1</span>);
+        <span class="function">quickSort</span>(arr, pi + <span class="number">1</span>, high);
+    }
+}
+</pre>
+</div>
+</div>
+
+</body>
+</html>
